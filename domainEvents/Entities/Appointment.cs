@@ -11,7 +11,7 @@ namespace domainEvents.Entities
         public string EmailAddress { get; private set; }
         public DateTime? ConfirmationReceivedDate { get; private set; }
 
-        public List<INotification> Events { get; set; } = new List<INotification>();
+        // public List<INotification> Events { get; set; } = new List<INotification>();
         protected Appointment() : this(Guid.NewGuid())
         {
         }

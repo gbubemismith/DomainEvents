@@ -5,7 +5,7 @@ using domainEvents.Shared;
 
 namespace domainEvents.Events
 {
-    public class AppointmentConfirmed : BaseDomainEvent
+    public class AppointmentConfirmed : IDomainEvent
     {
         public Appointment Appointment { get; set; }
         public DateTime DateTimeOccured { get; private set; }

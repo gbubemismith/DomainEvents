@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using domainEvents.Interfaces;
+using domainEvents.Shared;
 using MediatR;
 
 namespace domainEvents.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : IEntity
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity<Guid>
     {
         private readonly IMediator _mediator;
 

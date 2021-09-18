@@ -12,7 +12,6 @@ namespace domainEvents.Entities
         public string EmailAddress { get; private set; }
         public DateTime? ConfirmationReceivedDate { get; private set; }
 
-        // public List<INotification> Events { get; set; } = new List<INotification>();
         protected Appointment() : this(Guid.NewGuid())
         {
         }
@@ -29,9 +28,9 @@ namespace domainEvents.Entities
             var appointment = new Appointment();
             appointment.EmailAddress = emailAddress;
 
-            var appointmentCreatedEvent = new AppointmentCreated(appointment);
+            // var appointmentCreatedEvent = new AppointmentCreated(appointment);
 
-            // Events.Add(appointmentCreatedEvent);
+            appointment.Events.Add(new AppointmentCreated(appointment));
 
             // send an email - pretend there's 5-10 lines of code here to send an email
             // example:

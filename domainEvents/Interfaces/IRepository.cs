@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace domainEvents.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : IEntity
+    public interface IRepository<TEntity>
     {
         TEntity GetById(Guid id);
         List<TEntity> GetAll();

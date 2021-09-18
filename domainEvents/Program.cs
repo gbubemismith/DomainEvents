@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using domainEvents.Entities;
 using domainEvents.Interfaces;
 using domainEvents.Repositories;
 using domainEvents.Services;
@@ -14,13 +15,23 @@ namespace domainEvents
         {
             Console.WriteLine("Welcome");
 
-            var services = ConfigureServices();
+            // var services = ConfigureServices();
 
-            var app = services
-                        .BuildServiceProvider()
-                        .GetRequiredService<App>();
+            // var app = services
+            //             .BuildServiceProvider()
+            //             .GetRequiredService<App>();
 
-            await app.Run();
+            // await app.Run();
+
+            var video = new Video() { Title = "Title 1" };
+            var videoEncoder = new VideoEncoderService(); //publisher
+            var mailService = new MailService(); //subscriber
+            var messageService = new MessageService();
+            //registering the subscription
+            videoEncoder.VideoEncoded += mailService.OnVideoEncoded;
+            videoEncoder.VideoEncoded += messageService.OnVideoEncoded;
+
+            videoEncoder.Encode(video);
         }
 
         private static IServiceCollection ConfigureServices()

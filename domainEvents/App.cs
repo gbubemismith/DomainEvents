@@ -28,6 +28,7 @@ namespace domainEvents
 
             Console.WriteLine("Creating an appointment with a repository.");
             var appointment = Appointment.Create("steve@test2.com");
+
             await _appointmentRepo.Save(appointment);
             Console.WriteLine();
 

@@ -15,6 +15,7 @@ namespace domainEvents.Services
 
         public Task ScheduleAppointment(string email)
         {
+
             var appointment = Appointment.Create(email);
             return _appointmentRepo.Save(appointment);
         }

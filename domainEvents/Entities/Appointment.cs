@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using domainEvents.Events;
 using domainEvents.Interfaces;
+using domainEvents.Shared;
 using MediatR;
 
 namespace domainEvents.Entities
 {
-    public class Appointment : IEntity
+    public class Appointment : BaseEntity<Guid>
     {
-        public Guid Id { get; private set; }
         public string EmailAddress { get; private set; }
         public DateTime? ConfirmationReceivedDate { get; private set; }
 
@@ -27,6 +28,10 @@ namespace domainEvents.Entities
 
             var appointment = new Appointment();
             appointment.EmailAddress = emailAddress;
+
+            var appointmentCreatedEvent = new AppointmentCreated(appointment);
+
+            // Events.Add(appointmentCreatedEvent);
 
             // send an email - pretend there's 5-10 lines of code here to send an email
             // example:
@@ -55,6 +60,9 @@ namespace domainEvents.Entities
         {
             ConfirmationReceivedDate = dateConfirmed;
 
+            var appointmentConfrimedEvent = new AppointmentConfirmed(this);
+
+            Events.Add(appointmentConfrimedEvent);
 
             Console.WriteLine("[UI] User Interface informed appointment for {0} confirmed at {1}",
                             EmailAddress,

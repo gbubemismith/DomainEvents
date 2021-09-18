@@ -1,10 +1,11 @@
 using System;
 using domainEvents.Entities;
 using domainEvents.Interfaces;
+using domainEvents.Shared;
 
 namespace domainEvents.Events
 {
-    public class AppointmentCreated : IDomainEvent
+    public class AppointmentCreated : BaseDomainEvent
     {
         public Appointment Appointment { get; set; }
         public DateTime DateTimeOccured { get; set; }

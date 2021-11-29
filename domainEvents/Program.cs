@@ -21,18 +21,29 @@ namespace domainEvents
                         .BuildServiceProvider()
                         .GetRequiredService<App>();
 
-            await app.Run();
+            // await app.Run();
 
             //using pure events
             // var video = new Video() { Title = "Title 1" };
+
             // var videoEncoder = new VideoEncoderService(); //publisher
+
             // var mailService = new MailService(); //subscriber
-            // var messageService = new MessageService();
+            // var messageService = new MessageService();//subscriber
             // //registering the subscription
             // videoEncoder.VideoEncoded += mailService.OnVideoEncoded;
             // videoEncoder.VideoEncoded += messageService.OnVideoEncoded;
 
             // videoEncoder.Encode(video);
+
+            //Testing delegates
+            DelegateService.RelaxingOnTheBeach(DrinkWater);
+
+            //Func -> Generic delegate
+            Func<int, int, int> add = (int a, int b) => a + b;
+
+            //Action -> Generic delegate, does not return a value
+            Action<int> printNumber = (n) => Console.WriteLine("Print action");
         }
 
         private static IServiceCollection ConfigureServices()
@@ -46,5 +57,8 @@ namespace domainEvents
 
             return services;
         }
+
+        public static void DrinkWater() => Console.WriteLine("Drink water");
+        public static void DrinkBeer() => Console.WriteLine("Drink beer");
     }
 }

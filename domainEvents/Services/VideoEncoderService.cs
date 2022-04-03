@@ -21,7 +21,7 @@ namespace domainEvents.Services
 
         //simplier way to do 1 above (new)
         public event EventHandler<VideoEventArgs> VideoEncoded;
-        public event EventHandler VideoEncoding;
+        // public event EventHandler VideoEncoding;
         //2 old
         // public event VideoEncodedEventHandler VideoEncoded;
 

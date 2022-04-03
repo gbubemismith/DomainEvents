@@ -61,6 +61,8 @@ namespace domainEvents
                 var y = x;
                 return x == y;
             };
+
+            Test((x) => x + 2, 3);
         }
 
         private static IServiceCollection ConfigureServices()
@@ -75,12 +77,9 @@ namespace domainEvents
             return services;
         }
 
-        public static int Test(Func<int, int> testDel)
+        public static int Test(Func<int, int> testDel, int number)
         {
-
-            var check = testDel(2);
-
-            return 1;
+            return testDel(number);
         }
 
         public static int checkers(int age)
